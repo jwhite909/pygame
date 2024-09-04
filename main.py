@@ -19,7 +19,8 @@ async def main():
     # Load images
     deepfake = pygame.image.load('deepfake.png')
     unknown_enveloppe = pygame.image.load('unknown_enveloppe.png')
-    player_shield_image = pygame.image.load('player_shield.png')
+    #player_shield_image = pygame.image.load('player_shield.png')
+    player_shield_image = pygame.image.load('pass.png')
     mallicious_enveloppe = pygame.image.load('malicious_enveloppe.png')
     legitimate_enveloppe = pygame.image.load('legitimate_enveloppe.png')
     background_image = pygame.image.load('background.png')
@@ -45,8 +46,8 @@ async def main():
     YELLOW = (255,255,0)
     BLACK = (0,0,0)
     # Initialize game variables
-    player_x = SCREEN_WIDTH // 2
-    player_y = SCREEN_HEIGHT - 50
+    player_x = SCREEN_WIDTH // 3
+    player_y = SCREEN_HEIGHT - 100
     envelopes = []  # List to store envelopes
     deepfakes = []  # List to store envelopes
     score = 0
@@ -192,7 +193,7 @@ async def main():
         screen.blit(score_text, (10, 10))  # Adjust the x and y coordinates as needed
         
         # Draw player shield
-        screen.blit(player_shield_image, (player_x -25, player_y -25))
+        screen.blit(player_shield_image, (player_x -35, player_y -25))
 
         # Draw envelopes
         for envelope_x, envelope_y,envelope_type in envelopes:
