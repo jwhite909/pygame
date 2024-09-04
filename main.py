@@ -27,15 +27,15 @@ async def main():
 
     # Load sound & background music
 
-    if sys.platform == "Emscripten":
-        shoot_sound = pygame.mixer.Sound('pew.ogg')
-        notification_sound = pygame.mixer.Sound('notificationalert.ogg')
-        background_music = pygame.mixer.music.load('alienalerts.ogg')
-    else:
+    #if sys.platform == "Emscripten":
+    shoot_sound = pygame.mixer.Sound('pew.ogg')
+    notification_sound = pygame.mixer.Sound('notificationalert.ogg')
+    background_music = pygame.mixer.music.load('alienalerts.ogg')
+    #else:
         
-        shoot_sound = pygame.mixer.Sound('pew.mp3')
-        notification_sound = pygame.mixer.Sound('notificationalert.mp3')
-        background_music = pygame.mixer.music.load('alienalerts.mp3')
+     #   shoot_sound = pygame.mixer.Sound('pew.mp3')
+     #   notification_sound = pygame.mixer.Sound('notificationalert.mp3')
+     #   background_music = pygame.mixer.music.load('alienalerts.mp3')
 
 
     # Define some colors
