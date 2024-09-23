@@ -45,6 +45,7 @@ async def main():
     GREEN = (0, 255, 0)
     YELLOW = (255,255,0)
     BLACK = (0,0,0)
+
     # Initialize game variables
     player_x = SCREEN_WIDTH // 3
     player_y = SCREEN_HEIGHT - 100
@@ -71,11 +72,11 @@ async def main():
         screen.fill((255, 255, 255))
 
         # Display the "Game Over" text in bold font
-        game_over_text  = font.render("GAME OVER", True, (0, 0, 0))
+        game_over_text  = font.render("Partie terminée!", True, (0, 0, 0))
         screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, 100))
 
         # Display the player's score
-        score_text  = font.render(f"Score: {score}", True, (0, 0, 0))
+        score_text  = font.render(f"Résultat: {score}", True, (0, 0, 0))
         screen.blit(score_text, (SCREEN_WIDTH // 2 - score_text.get_width() // 2, 150))
 
         # Update the display
@@ -85,9 +86,58 @@ async def main():
         sys.exit()
     
 
+
+
+
+
+    # Police
+    font = pygame.font.Font(None, 36)
+
+    # Fonction pour afficher le texte sur l'écran
+    def draw_text(text, font, color, surface, x, y):
+        text_obj = font.render(text, True, color)
+        text_rect = text_obj.get_rect()
+        text_rect.topleft = (x, y)
+        surface.blit(text_obj, text_rect)
+
+    # Fonction de l'écran des instructions
+    def show_instructions():
+        running = True
+        while running:
+            screen.fill(BLACK)
+            
+            draw_text("Instructions", font, WHITE, screen, 20, 20)
+            draw_text("- Utilisez les flèches pour déplacer la clef PASS", font, WHITE, screen, 20, 80)
+            draw_text("- Utilisez ESPACE pour faire feu sur les courriels malicieux (rouge) ", font, WHITE, screen, 20, 120)
+            draw_text("- Tirez sur les courriel suspects pour découvrir si ils sont vert ou rouge!", font, WHITE, screen, 20, 160)
+            draw_text("- Vous devez éviter les DeepFake!", font, WHITE, screen, 20, 200)
+            draw_text("- Attrapez les courriels légitimes (vert) ", font, WHITE, screen, 20, 240)
+            draw_text("Appuyez sur 'q' pour quitter", font, WHITE, screen, 20, 300)
+            draw_text("Appuyez sur ENTER pour commencer !", font, WHITE, screen, 20, 340)
+
+            pygame.display.flip()
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:  # Démarre le jeu si ENTER est pressé
+                        running = False
+                    if event.key == pygame.K_ESCAPE:  # Quitte le jeu si ESC est pressé
+                        pygame.quit()
+                        sys.exit()
+
+
+
+    # Appel de la fonction d'instructions
+    show_instructions()
+
+
     # Game loop
 
     while True:
+      
         screen.blit(background_image, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
