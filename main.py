@@ -45,7 +45,6 @@ async def main():
     GREEN = (0, 255, 0)
     YELLOW = (255,255,0)
     BLACK = (0,0,0)
-
     # Initialize game variables
     player_x = SCREEN_WIDTH // 3
     player_y = SCREEN_HEIGHT - 100
@@ -62,7 +61,6 @@ async def main():
 
     # Load the font for displaying text
     font  = pygame.font.SysFont('Arial', 46)
-    small_font = pygame.font.SysFont('Arial', 26)
 
     # Play the background music loop
     pygame.mixer.music.play(-1)
@@ -87,51 +85,9 @@ async def main():
         sys.exit()
     
 
-    # Fonction pour afficher le texte sur l'écran
-    def draw_text(text, font, color, surface, x, y):
-        text_obj = font.render(text, True, color)
-        text_rect = text_obj.get_rect()
-        text_rect.topleft = (x, y)
-        surface.blit(text_obj, text_rect)
-
-    # Fonction de l'écran des instructions
-    def show_instructions():
-        running = True
-        while running:
-            screen.fill(BLACK)
-            
-            draw_text("Instructions", font, WHITE, screen, 20, 20)
-            draw_text("- Utilisez les flèches pour déplacer la clef PASS", small_font, WHITE, screen, 20, 80)
-            draw_text("- Utilisez ESPACE pour faire feu sur les courriels malicieux (rouge) ", small_font, WHITE, screen, 20, 120)
-            draw_text("- Tirez sur les courriel suspects pour découvrir s'ils sont vert ou rouge!", small_font, WHITE, screen, 20, 160)
-            draw_text("- Vous devez éviter les DeepFake!", small_font, WHITE, screen, 20, 200)
-            draw_text("- Attrapez les courriels légitimes (vert) ", small_font, WHITE, screen, 20, 240)
-            draw_text("- Appuyez sur 'q' pour quitter", small_font, WHITE, screen, 20, 300)
-            draw_text("** Appuyez sur ENTER pour commencer !", small_font, WHITE, screen, 20, 340)
-
-            pygame.display.flip()
-            
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RETURN:  # Démarre le jeu si ENTER est pressé
-                        running = False
-                    if event.key == pygame.K_ESCAPE:  # Quitte le jeu si ESC est pressé
-                        pygame.quit()
-                        sys.exit()
-
-
-
-    # Appel de la fonction d'instructions
-    show_instructions()
-
-
     # Game loop
 
     while True:
-      
         screen.blit(background_image, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
