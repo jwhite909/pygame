@@ -62,6 +62,7 @@ async def main():
 
     # Load the font for displaying text
     font  = pygame.font.SysFont('Arial', 46)
+    small_font = pygame.font.SysFont('Arial', 26)
 
     # Play the background music loop
     pygame.mixer.music.play(-1)
@@ -86,13 +87,6 @@ async def main():
         sys.exit()
     
 
-
-
-
-
-    # Police
-    font = pygame.font.Font(None, 36)
-
     # Fonction pour afficher le texte sur l'écran
     def draw_text(text, font, color, surface, x, y):
         text_obj = font.render(text, True, color)
@@ -107,13 +101,13 @@ async def main():
             screen.fill(BLACK)
             
             draw_text("Instructions", font, WHITE, screen, 20, 20)
-            draw_text("- Utilisez les flèches pour déplacer la clef PASS", font, WHITE, screen, 20, 80)
-            draw_text("- Utilisez ESPACE pour faire feu sur les courriels malicieux (rouge) ", font, WHITE, screen, 20, 120)
-            draw_text("- Tirez sur les courriel suspects pour découvrir si ils sont vert ou rouge!", font, WHITE, screen, 20, 160)
-            draw_text("- Vous devez éviter les DeepFake!", font, WHITE, screen, 20, 200)
-            draw_text("- Attrapez les courriels légitimes (vert) ", font, WHITE, screen, 20, 240)
-            draw_text("Appuyez sur 'q' pour quitter", font, WHITE, screen, 20, 300)
-            draw_text("Appuyez sur ENTER pour commencer !", font, WHITE, screen, 20, 340)
+            draw_text("- Utilisez les flèches pour déplacer la clef PASS", small_font, WHITE, screen, 20, 80)
+            draw_text("- Utilisez ESPACE pour faire feu sur les courriels malicieux (rouge) ", small_font, WHITE, screen, 20, 120)
+            draw_text("- Tirez sur les courriel suspects pour découvrir s'ils sont vert ou rouge!", small_font, WHITE, screen, 20, 160)
+            draw_text("- Vous devez éviter les DeepFake!", small_font, WHITE, screen, 20, 200)
+            draw_text("- Attrapez les courriels légitimes (vert) ", small_font, WHITE, screen, 20, 240)
+            draw_text("- Appuyez sur 'q' pour quitter", small_font, WHITE, screen, 20, 300)
+            draw_text("** Appuyez sur ENTER pour commencer !", small_font, WHITE, screen, 20, 340)
 
             pygame.display.flip()
             
